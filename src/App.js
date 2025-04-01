@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import Die from "./comps/Die";
+import Die from "./components/Die";
+import GameHeader from "./components/GameHeader";
+import GameControls from "./components/GameControls";
 import Confetti from "react-confetti";
 
 export default function App() {
@@ -83,14 +85,12 @@ export default function App() {
 
   return (
     <main>
-      <Confetti width={window.innerWidth} height={window.innerHeight} className={gameState.didWin ? "" : "hide-confetti"}/>
-      <div className="game-wrapper">
-        <h2 className="game-title">TENZIES</h2>
-        <p className="game-instructions">
-          Click on two dice that have the same number. Keep clicking until all
-          dice are selected.
-        </p>
-      </div>
+      <Confetti
+        width={window.innerWidth}
+        height={window.innerHeight}
+        className={gameState.didWin ? "" : "hide-confetti"}
+      />
+      <GameHeader />
       <div className="die-container">
         {values.map((die, i) => (
           <Die
@@ -103,17 +103,7 @@ export default function App() {
           />
         ))}
       </div>
-      <button className="roll-button" onClick={rollDice}>
-        {gameState.rollButton}
-      </button>
-      <button
-        className={`roll-button restart-button ${
-          gameState.didWin ? "hide-restart-button" : ""
-        }`}
-        onClick={resetDice}
-      >
-        RESTART
-      </button>
+      <GameControls rollDice={rollDice} resetDice={resetDice} didWin={gameState.didWin} rollButton={gameState.rollButton} />
     </main>
   );
 }
