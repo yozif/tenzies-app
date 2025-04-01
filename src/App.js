@@ -83,7 +83,7 @@ export default function App() {
 
   return (
     <main>
-      <Confetti width="400px" height="400px" />
+      <Confetti width={window.innerWidth} height="400px" />
       <div className="die-container">
         {values.map((die, i) => (
           <Die
