@@ -83,7 +83,14 @@ export default function App() {
 
   return (
     <main>
-      <Confetti width={window.innerWidth} height="400px" />
+      <Confetti width={window.innerWidth} height={window.innerHeight} className={gameState.didWin ? "" : "hide-confetti"}/>
+      <div className="game-wrapper">
+        <h2 className="game-title">TENZIES</h2>
+        <p className="game-instructions">
+          Click on two dice that have the same number. Keep clicking until all
+          dice are selected.
+        </p>
+      </div>
       <div className="die-container">
         {values.map((die, i) => (
           <Die
