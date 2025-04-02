@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { useState, useEffect } from "react";
 import Die from "./components/Die";
 import GameHeader from "./components/GameHeader";
@@ -91,7 +92,7 @@ export default function App() {
         className={gameState.didWin ? "" : "hide-confetti"}
       />
       <GameHeader />
-      <div className="die-container">
+      <div className="die-container" data-testid="die-container-test">
         {values.map((die, i) => (
           <Die
             key={i}
